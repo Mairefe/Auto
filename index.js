@@ -3,7 +3,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const nodemailer = require("nodemailer");
 const cron = require("node-cron");
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_TOKEN });
 
 const DOMAINS = [
   {
