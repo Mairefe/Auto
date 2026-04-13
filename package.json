@@ -1,11 +1,9 @@
 {
   "name": "trend-radar",
   "version": "1.0.0",
-  "description": "Mahir - Günlük trend tarayıcısı",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node src/test.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
