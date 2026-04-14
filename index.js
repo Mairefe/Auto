@@ -100,7 +100,10 @@ async function runRadar() {
   console.log("\n═══ TAMAMLANDI ═══\n");
 }
 
-// Her gün 08:00 Istanbul (UTC+3) = UTC 05:00
-cron.schedule("0 5 * * *", runRadar);
-
-console.log("Trend Radar aktif. Her gün 08:00 Istanbul saatinde çalışır.");
+// GitHub Actions'ta direkt çalıştır
+if (process.env.GITHUB_ACTIONS) {
+  runRadar().then(() => process.exit(0)).catch(() => process.exit(1));
+} else {
+  cron.schedule("0 5 * * *", runRadar);
+  console.log("Trend Radar aktif. Her gün 08:00 Istanbul saatinde çalışır.");
+}
