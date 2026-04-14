@@ -1,0 +1,22 @@
+name: Daily Trend Radar
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # 08:00 Istanbul
+  workflow_dispatch:       # Manuel tetikleme butonu
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: node index.js
+        env:
+          AI_AUTH: ${{ secrets.AI_AUTH }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TOKEN: ${{ secrets.MAIL_TOKEN }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
